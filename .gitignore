@@ -7,3 +7,4 @@ deps/deps.jl
 # Emacs files
 .\#*
 .projectile
+dist/
