@@ -30,11 +30,8 @@ function is_divisible_by_digits(n, digits)
     # Checks if a number is divisible by two x digits number
     max = (10 ^ digits) - 1
     min = minimum([max, trunc(Int, n / (10 ^ digits) + 1)])
-    println(max)
-    println(min)
 
-    for i in range(max, min-max)
-        println(n/i)
+    for i in range(max, -1, max-min)
         if n % i == 0 && (n / i) <= max
             return true
         end
@@ -43,15 +40,15 @@ function is_divisible_by_digits(n, digits)
 end
 
 @assert is_divisible_by_digits(9999, 2) == false
+@assert is_divisible_by_digits(9779, 2) == false
 @assert is_divisible_by_digits(9009, 2) == true
 
 
 function compute_palindrome_by_factors(n, digit)
-    while !is_palindrome(n) && !is_divisble_by_digits(n, digit)
-        n = find_next_palindrome_decreasing(n)
+    while !is_palindrome(n) || !is_divisible_by_digits(n, digit)
+        n = find_next_palindrome_decreasing(n-1)
     end
     return n
 end
-
 @assert compute_palindrome_by_factors(99*99,2) == 9009
 println(compute_palindrome_by_factors(999*999, 3))
