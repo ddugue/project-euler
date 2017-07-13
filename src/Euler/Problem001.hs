@@ -3,7 +3,6 @@ module Euler.Problem001 (main, sumProducts) where
 import Control.Monad
 import Data.List (nub)
 import Data.List.Split
-import Test.HUnit
 
 import Utils.Prompt
 
